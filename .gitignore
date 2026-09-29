@@ -9,6 +9,10 @@ dist/
 pg-prompt.txt
 pg-launch.py
 pg-codex.log
+pg-prompt*
+pg-launch*
+pg-*.log
 .codex.log
 codex.log
+*.prompt.txt
 *.log

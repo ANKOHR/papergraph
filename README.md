@@ -14,7 +14,7 @@ pgr graph --entities build/entities --out build/graph.json
 pgr contradictions --graph build/graph.json
 pgr questions --graph build/graph.json
 pgr report --graph build/graph.json --format md
-pgr query --graph build/graph.json --claim claim-boosted
+pgr query --graph build/graph.json --claim claim-rise
 pgr export --graph build/graph.json --format graphml --out build/graph.graphml
 pytest
 ```
@@ -64,6 +64,8 @@ Each UTF-8 JSON file has `schema_version: 1` and `synthetic: true`, plus these f
 
 All referenced IDs must resolve. Files must be synthetic JSON papers of the documented schema. The fixture generator uses no random numbers, so no seed is needed.
 
+Entity node IDs use a type prefix such as `claim:claim-rise`. Edge IDs use the edge type and endpoint IDs, with citation IDs included for citation edges. The graph includes `uses-dataset` edges to distinguish dataset use from an evaluation recorded by `evaluates-on`.
+
 ## Contradiction rule
 
 PaperGraph compares claims on the same dataset. It flags a pair when one result direction is `improves` and the other is `worsens`. A shared non-empty `contradiction_group` marks fixture annotation, and the heuristic still has to confirm the opposing directions before the pair is emitted. Each record and `contradicts` graph edge names both claim IDs, their papers, the dataset, and each result row's metric, baseline, observed value, and direction. Neutral results do not form contradictions.
@@ -85,7 +87,7 @@ Each question includes the relevant entity ID and a concise statement of the gra
 - `pgr graph --entities DIR [--out FILE]` creates the graph and its contradiction edges.
 - `pgr contradictions --graph FILE` prints evidence-linked contradictions.
 - `pgr questions --graph FILE` prints evidence-linked open questions.
-- `pgr query --graph FILE (--claim ID | --node ID) [--depth N]` traverses the graph.
+- `pgr query --graph FILE (--claim ID | --node ID) [--depth N]` traverses connected edges up to depth 3 by default.
 - `pgr export --graph FILE --format graphml|json [--out FILE]` exports the graph.
 - `pgr report --graph FILE --format md|html [--out FILE]` creates a report.
 
