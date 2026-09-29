@@ -1,0 +1,4 @@
+Pytest test count: 18 passed.
+Local commit hash (validated implementation): 8e6db8d89ce3f1f88944a861a85450e4555d8ac0
+
+PaperGraph is a deterministic Python CLI that generates synthetic structured papers, parses their typed claims, methods, datasets, models, and citations, and builds a queryable graph with GraphML and JSON export. It detects opposing same-dataset claims with result-table evidence, derives open questions from unevaluated methods and sparse support or dataset coverage, and renders Markdown and HTML reports that clearly state the papers are synthetic and extraction is rule-based. The project includes a documented fixture format, complete CLI, and an 18-test pytest suite.
