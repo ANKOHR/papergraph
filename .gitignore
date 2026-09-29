@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+build/
+dist/
+*.egg-info/
+pg-prompt.txt
+pg-launch.py
+pg-codex.log
+.codex.log
+codex.log
+*.log
